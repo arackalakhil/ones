@@ -72,7 +72,7 @@
 		<div class="tengah">
 			<p>The Wedding Of</p>
 			<h1 style="font-size:80px;color:white;margin-top:-30px;">Devika &amp; Jijin </h1>
-			<p style="margin-top:30px;">with love<br>
+			<p style="margin-top:30px;">Enter Our Fairytale<br>
 				<a href="#" onclick="return OpenInvitation();">
 					<button class="btn-depan btn-4 btn-sep-depan icon-send popup1_open" data-popup-ordinal="0"
 						id="open_92089009">OPEN</button>
@@ -165,7 +165,7 @@
 					<br><i style="white-space:pre-line;">
 						<body style="font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
 
-							<h1 style="color: #e84a5f;">Join Us in Celebration!</h1>
+							<h1 style="color:#90A3B5;">Join Us in Celebration!</h1>
 							
 							<p style="font-size: 16px; color: #333;">With hearts full of joy, we, <strong>Mrs. Shiny Babu & Late Babu Narayana Pillai</strong>, invite you and your cherished family to share in the joy of our daughter <strong>Derika's</strong> marriage to <strong>Jijin</strong>, son of <strong>Mrs. Sugatha Kumari & Mr. Nadesan Sekharan</strong>. The auspicious ceremony will take place on <strong>Monday, August 28, 2023 (1199 Chingam 12)</strong> at Enchakkattu House, Keerikode, Thodupuzha. Your presence will make this occasion even more special.</p>
 							
@@ -425,9 +425,9 @@
 							<!-- CLOSE DATA -->
 							<div class="col-md-12" style="text-align:center;font-size:12px;">
 								<br><i style="white-space:pre-line;">
-									<body style="font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 15px;">
+									<body style="font-family: fantasy, sans-serif; text-align: center; background-color: #f9f9f9; padding: 15px;">
 			
-										<h1 style="color: #e84a5f;">Sisterly Sentiments : A Touching Message for the Bride</h1>
+										<h1 style="color: #90A3B5;">Sisterly Sentiments : A Touching Message for the Bride</h1>
 										
 										<p style="font-size: 16px; color: #333;"> <strong>"As you take this beautiful step
 											 into a new life, my heart is filled with a mixture of emotions. From our shared childhood memories to the 
@@ -523,7 +523,7 @@
 
 
 		<!-- MUTE BUTTON -->
-		<a id="mute" href="#/" onclick="mute()" class="floatmute">
+		<a id="mute" href="#/"  class="floatmute">
 			<i color="#fff" class="fa fa-volume-up my-float"></i>
 		</a>
 		<!-- MUTE BUTTON -->
@@ -591,36 +591,32 @@
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function (event) {
-			let audio = document.getElementById("audio");
-			let button = document.getElementById('mute');
-			if (-localStorage.getItem('mute')) {
-				audio.muted = true;
-				button.innerHTML = '<i color="#000" class="fa fa-volume-off my-float"></i>';
-				audio.pause()
-			} else {
-				audio.volume = 0.9;
-				audio.play()
-			}
-		})
+    let audio = document.getElementById("audio");
+    let button = document.getElementById('mute');
 
-		function mute() {
-			let audio = document.getElementById('audio');
-			let button = document.getElementById('mute');
-			let isMute = +localStorage.getItem('mute');
-			if (!isMute) {
-				audio.muted = true;
-				audio.pause()
-				button.innerHTML = '<i color="#000" class="fa fa-volume-off my-float"></i>';
-				localStorage.setItem('mute', 1);
-			} else {
-				audio.muted = false;
-				audio.volume = 0.9;
-				audio.play()
-				button.innerHTML = '<i color="#fff" class="fa fa-volume-up my-float"></i>';
-				localStorage.setItem('mute', 0);
+    // Restore mute state from localStorage
+    let isMute = +localStorage.getItem('mute');
+    if (isMute) {
+        audio.muted = true;
+        button.innerHTML = '<i color="#000" class="fa fa-volume-off my-float"></i>';
+    }
 
-			}
-		}
+    button.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.muted = false;
+            audio.volume = 0.9;
+            audio.play();
+            button.innerHTML = '<i color="#fff" class="fa fa-volume-up my-float"></i>';
+            localStorage.setItem('mute', 0);
+        } else {
+            audio.muted = true;
+            audio.pause();
+            button.innerHTML = '<i color="#000" class="fa fa-volume-off my-float"></i>';
+            localStorage.setItem('mute', 1);
+        }
+    });
+});
+
 	</script>
 
 	<!--end script mute-->
